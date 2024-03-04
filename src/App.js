@@ -1,23 +1,21 @@
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Login from "./components/LogIn";
 
-import LogIn, { exportedFunctions }from "./components/LogIn";
-
-// USER PAGES
+// Import your components and pages
 import SidebarUser from "./components/SidebarUser";
 import HomeUser from "./pages/user/HomeUser";
 import SearchBooksUser from "./pages/user/SearchBooksUser";
 import FAQ from "./pages/user/FAQ";
 import Setting from "./pages/user/Setting";
 
-// ADMIN PAGES
 import SidebarAdmin from "./components/SidebarAdmin";
 import HomeAdmin from "./pages/admin/HomeAdmin";
 import SearchBooksAdmin from "./pages/admin/SearchBooksAdmin";
 import AddUser from "./pages/admin/AddUser";
 import IssueBookAdmin from "./pages/admin/IssueBookAdmin";
 
-// SUPER ADMIN PAGES
 import SidebarSuperAdmin from "./components/SidebarSuperAdmin";
 import HomeSuperAdmin from "./pages/superadmin/HomeSuperAdmin";
 import BooksList from "./pages/superadmin/BooksList";
@@ -25,11 +23,17 @@ import ManageUser from "./pages/superadmin/ManageUser";
 import IssueBookSuperAdmin from "./pages/superadmin/IssueBookSuperAdmin";
 
 function App() {
-  const userRole = "user"; 
+  // dito nya tinatanggap yung bato ng handle submit
+  const [userRole, setUserRole] = useState(null);
 
+  // tas dito nireread na yung user role para ma set
+  const handleLogin = (role) => {
+    setUserRole(role);
+  };
+
+  // Render sidebar and routes based on user role
   let sidebarComponent, routesComponent;
-
-  // Determine which sidebar and routes components to use based on the user's role
+  
   if (userRole === "user") {
     sidebarComponent = <SidebarUser />;
     routesComponent = (
@@ -60,15 +64,18 @@ function App() {
         <Route path="/books-issued" element={<IssueBookSuperAdmin />} />
       </Routes>
     );
+  } else {
+    // pabalik sa login 
+    return (
+      <Router>
+        <Login handleLogin={handleLogin} />
+      </Router>
+    );
   }
 
+  // ito na yung maglalabas ng logged in account depending sa role
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LogIn />} />
-      </Routes>
-
-      {/* Render the selected sidebar and routes components */}
       <div className="min-h-screen flex">
         {sidebarComponent}
         {routesComponent}
