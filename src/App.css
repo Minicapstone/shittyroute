@@ -1,0 +1,35 @@
+.transition-sidebar {
+  transition: all 0.4s ease;
+}
+
+.book-table{
+  max-height: 51rem;
+}
+
+.admin-table{
+  max-height: 50rem;
+}
+
+.notification-height{
+  max-height: 30rem;
+}
+
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #720026; 
+  border-radius: 6px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 20px;
+  background-color: #d3d3d3; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #720026; 
+}
+
