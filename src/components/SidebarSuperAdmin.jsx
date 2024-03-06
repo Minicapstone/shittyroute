@@ -11,6 +11,7 @@ import { GiBookshelf } from "react-icons/gi";
 import { IoIosLogOut } from "react-icons/io";
 import { LuBookDown } from "react-icons/lu";
 import Profile from "../assets/profile.jpg";
+import { handleLogout } from "./Logout";
 
 const SidebarSuperAdmin = () => {
   const [isOpen, setisOpen] = useState(true);
@@ -19,6 +20,7 @@ const SidebarSuperAdmin = () => {
   const isActive = (path) => {
     return location.pathname === path;
   };
+  
   return (
     <div>
       {!isOpen ? (
@@ -59,7 +61,7 @@ const SidebarSuperAdmin = () => {
 
             <div className="mt-auto">
               <hr className="m-2 text-white text-opacity-50" />
-              <li className="text-3xl text-center px-4 py-3 m-2 text-white hover:bg-white hover:text-black hover:rounded-xl cursor-pointer">
+              <li className="text-3xl text-center px-4 py-3 m-2 text-white hover:bg-white hover:text-black hover:rounded-xl cursor-pointer" onClick={handleLogout}>
                 <IoIosLogOut />
               </li>
             </div>
@@ -123,7 +125,7 @@ const SidebarSuperAdmin = () => {
 
             <div className="mt-auto">
               <hr className="m-2 text-gray text-opacity-50" />
-              <li className="text-white text-base flex items-center px-4 py-3 m-2 hover:bg-white hover:text-black hover:rounded-xl cursor-pointer">
+              <li className="text-white text-base flex items-center px-4 py-3 m-2 hover:bg-white hover:text-black hover:rounded-xl cursor-pointer" onClick={handleLogout}>
                 <IoIosLogOut className="text-3xl mr-2" /> Log Out
               </li>
             </div>
