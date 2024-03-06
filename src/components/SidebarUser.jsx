@@ -15,6 +15,8 @@ import {
 } from "react-icons/io";
 import Profile from "../assets/profile.jpg";
 
+import { handleLogout } from "./Logout";
+
 const SidebarUser = () => {
   const [isOpen, setisOpen] = useState(true);
   const location = useLocation();
@@ -22,6 +24,9 @@ const SidebarUser = () => {
   const isActive = (path) => {
     return location.pathname === path;
   };
+
+ 
+  
   return (
     <div>
       {!isOpen ? (
@@ -59,7 +64,7 @@ const SidebarUser = () => {
 
             <div className="mt-auto">
               <hr className="m-2 text-white text-opacity-50" />
-              <li className="text-3xl text-center px-4 py-3 m-2 text-white hover:bg-white hover:text-black hover:rounded-xl cursor-pointer">
+              <li className="text-3xl text-center px-4 py-3 m-2 text-white hover:bg-white hover:text-black hover:rounded-xl cursor-pointer" onClick={handleLogout}>
                 <IoIosLogOut />
               </li>
             </div>
@@ -126,8 +131,8 @@ const SidebarUser = () => {
 
             <div className="mt-auto">
               <hr className="m-2 text-gray text-opacity-50" />
-              <li className="text-white text-base flex items-center px-4 py-3 m-2 hover:bg-white hover:text-black hover:rounded-xl cursor-pointer">
-                <IoIosLogOut className="text-3xl mr-2" /> Log Out
+              <li className="text-white text-base flex items-center px-4 py-3 m-2 hover:bg-white hover:text-black hover:rounded-xl cursor-pointer" onClick={handleLogout}>
+                <IoIosLogOut className="text-3xl mr-2"/> Log Out
               </li>
             </div>
           </ul>
