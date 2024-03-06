@@ -13,13 +13,13 @@ function Login({ handleLogin }) {
   // dito yung hayup na maghhandle ng roles pag naginput ka ng username at password (sakit sa ulo)
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (username === "user" && password === "password") {
+    if (username === "user" && password === "1234") {
       handleLogin("user");
       navigate("/home-user"); 
-    } else if (username === "admin" && password === "password") {
+    } else if (username === "admin" && password === "1234") {
       handleLogin("admin");
       navigate("/home-admin"); 
-    } else if (username === "superadmin" && password === "password") {
+    } else if (username === "superadmin" && password === "1234") {
       handleLogin("super-admin");
       navigate("/home-super-admin"); 
     } else {
