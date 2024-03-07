@@ -48,7 +48,6 @@ const LibraryLogs = () => {
   };
 
   const handleSignIn = () => {
-    const currentTimeStamp = new Date().toLocaleString();
     const newUserList = [
       ...userList,
       {

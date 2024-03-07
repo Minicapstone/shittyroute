@@ -4,8 +4,6 @@ import Dropdown from "./Dropdown";
 
 const UserListSuperAdmin = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleteConfirmationOpen] =
-    useState(false);
   const [formData, setFormData] = useState({
     studentNumber: "",
     docId: "",
@@ -13,8 +11,29 @@ const UserListSuperAdmin = () => {
     issueDate: "",
     returnDate: "",
   });
-  const [issuedBooks, setIssuedBooks] = useState([]);
-  //const [deleteIndex, setDeleteIndex] = useState(null);
+  const [issuedBooks, setIssuedBooks] = useState([
+    {
+      studentNumber: "123456",
+      docId: "789",
+      title: "Sample Book 1",
+      issueDate: "2024-03-07",
+      returnDate: "2024-03-21",
+    },
+    {
+      studentNumber: "456789",
+      docId: "012",
+      title: "Sample Book 2",
+      issueDate: "2024-03-08",
+      returnDate: "2024-03-22",
+    },
+    {
+      studentNumber: "110011",
+      docId: "014",
+      title: "Sample Book 3",
+      issueDate: "2024-03-12",
+      returnDate: "2024-03-22",
+    },
+  ]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -36,20 +55,6 @@ const UserListSuperAdmin = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleDelete = () => {
-  //   if (deleteIndex !== null) {
-  //     setIssuedBooks((prevBooks) =>
-  //       prevBooks.filter((_, i) => i !== deleteIndex)
-  //     );
-  //     setDeleteIndex(null);
-  //   }
-  // };
-
-  // const handleOpenDeleteConfirmation = (index) => {
-  //   setDeleteIndex(index);
-  // };
- 
-
   const handleDelete = (studentNumber) => {
     alert("Transaction deleted", studentNumber);
   };
@@ -63,8 +68,6 @@ const UserListSuperAdmin = () => {
     { label: "Delete", onClick: () => handleDelete(studentNumber) },
   ];
 
-
-  // Function to handle export action
   const handleExport = () => {
     alert("Succesfully exported as Spreadsheet...");
   };
@@ -97,7 +100,7 @@ const UserListSuperAdmin = () => {
               <th className="px-5 py-4">Action</th>
             </tr>
           </thead>
-      
+
           <tbody>
             {issuedBooks.map((book, index) => (
               <tr key={index} className="border-b border-gray text-sm">
@@ -107,19 +110,17 @@ const UserListSuperAdmin = () => {
                 <td className="px-5 py-2">{book.issueDate}</td>
                 <td className="px-5 py-2">{book.returnDate}</td>
                 <td className="px-5">
-                    <Dropdown 
-                      options={rowActions(book.studentNumber)}
-                      onSelect={(option) => option.onClick(book.studentNumber)}
-                      className="mr-2"
-                    />
-                  </td>
+                  <Dropdown
+                    options={rowActions(book.studentNumber)}
+                    onSelect={(option) => option.onClick(book.studentNumber)}
+                    className="mr-2"
+                  />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      
 
       {isModalOpen && (
         <div className="fixed z-10 inset-0 overflow-y-auto drop-shadow-md">
